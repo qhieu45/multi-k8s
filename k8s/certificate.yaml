@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: multi-k8s-tk-tls
+spec:
+  secretName: multi-k8s-tk
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: multik8s.tk
+  dnsNames:
+    - multik8s.tk
+    - www.multik8s.tk
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - multik8s.tk
+          - www.multik8s.tk
