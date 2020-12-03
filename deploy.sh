@@ -9,7 +9,7 @@ docker push qhieu45/multi-docker-client:$SHA
 docker push qhieu45/multi-docker-api:$SHA
 docker push qhieu45/multi-docker-worker:$SHA
 
-kubectl apply -f k8s
+kubectl apply -f k8s -validate=false
 kubectl set image deployments/api-deployment api=qhieu45/multi-docker-api:$SHA
 kubectl set image deployments/client-deployment client=qhieu45/multi-docker-client:$SHA
 kubectl set image deployments/worker-deployment worker=qhieu45/multi-docker-worker:$SHA
